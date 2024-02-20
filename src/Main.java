@@ -20,7 +20,7 @@ public class Main {
         double lengthInMinutes = input.nextDouble();
 
         System.out.println("Input genre");
-        String genre = input.nextLine();
+        String genre = input.next();
 
         collection.addMovie(title,director,yearCreated,isInColor,lengthInMinutes,genre);
 
