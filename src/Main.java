@@ -13,14 +13,14 @@ public class Main {
         System.out.println("Input year of creation");
         int yearCreated = input.nextInt();
 
-        System.out.println("Is the movie in color? (True/False)");
+        System.out.println("Is the movie in color? (true/false)");
         boolean isInColor = input.nextBoolean();
 
         System.out.println("Input length in minutes");
         double lengthInMinutes = input.nextDouble();
 
         System.out.println("Input genre");
-        String genre = input.next();
+        String genre = input.nextLine();
 
         collection.addMovie(title,director,yearCreated,isInColor,lengthInMinutes,genre);
 
