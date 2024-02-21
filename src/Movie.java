@@ -12,7 +12,7 @@ public class Movie {
         this.director = director;
         this.yearCreated = yearCreated;
         this.isInColor = isInColor;
-        this. lengthInMinutes = lengthInMinutes;
+        this.lengthInMinutes = lengthInMinutes;
         this.genre = genre;
     }
 
