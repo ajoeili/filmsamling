@@ -4,42 +4,46 @@ public class Main {
         Scanner input = new Scanner(System.in);
         MovieCollection collection = new MovieCollection();
 
-        System.out.println("Input movie title");
-        String title = input.nextLine();
+        System.out.println("Velkommen til min filmsamling!");
+        System.out.println("1. Opret en film");
+        System.out.println("2. Afslut");
 
-        System.out.println("Input director");
-        String director = input.nextLine();
+        int sentinel = 2;
+        int choice = input.nextInt();
 
-        System.out.println("Input year of creation");
-        int yearCreated = input.nextInt();
+        while(choice != sentinel) {
+            if(choice == 1) {
+                System.out.println("Input movie title");
+                String title = input.nextLine();
+                input.nextLine();
+                System.out.println("Input director");
+                String director = input.nextLine();
 
-        System.out.println("Is the movie in color? (true/false)");
-        boolean isInColor = input.nextBoolean();
+                System.out.println("Input year of creation");
+                int yearCreated = input.nextInt();
 
-        System.out.println("Input length in minutes");
-        double lengthInMinutes = input.nextDouble();
+                System.out.println("Is the movie in color? (true/false)");
+                boolean isInColor = input.nextBoolean();
 
-        input.nextLine();
+                System.out.println("Input length in minutes");
+                double lengthInMinutes = input.nextDouble();
 
-        System.out.println("Input genre");
-        String genre = input.nextLine();
+                input.nextLine();
 
-        collection.addMovie(title,director,yearCreated,isInColor,lengthInMinutes,genre);
+                System.out.println("Input genre");
+                String genre = input.nextLine();
 
-        for(Movie movie : collection.getCollection()) {
-            if(movie != null) {
-                System.out.println("Title: " + title);
-                System.out.println("Director: " + director);
-                System.out.println("Year of creation: " + yearCreated);
-                if(isInColor) {
-                    System.out.println("The film is a color film");
-                } else {
-                    System.out.println("The film is a black & white film");
-                }
-                System.out.println("Length in minutes: " + lengthInMinutes);
-                System.out.println("Genre: " + genre);
+                collection.addMovie(title,director,yearCreated,isInColor,lengthInMinutes,genre);
+
+                System.out.println("***** MENU ****");
+                System.out.println("1. Opret en film");
+                System.out.println("2. Afslut");
+
+                choice = input.nextInt();
+
+            } else {
+                System.out.println("Please press 1 to add new movie, or press 2 to exit");
             }
         }
-
     }
 }
