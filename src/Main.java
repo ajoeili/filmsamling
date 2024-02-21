@@ -19,6 +19,8 @@ public class Main {
         System.out.println("Input length in minutes");
         double lengthInMinutes = input.nextDouble();
 
+        input.nextLine();
+
         System.out.println("Input genre");
         String genre = input.nextLine();
 
@@ -29,7 +31,11 @@ public class Main {
                 System.out.println("Title: " + title);
                 System.out.println("Director: " + director);
                 System.out.println("Year of creation: " + yearCreated);
-                System.out.println("The film is a color film: ");
+                if(isInColor) {
+                    System.out.println("The film is a color film");
+                } else {
+                    System.out.println("The film is a black & white film");
+                }
                 System.out.println("Length in minutes: " + lengthInMinutes);
                 System.out.println("Genre: " + genre);
             }
