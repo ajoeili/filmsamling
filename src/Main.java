@@ -5,16 +5,24 @@ public class Main {
         Scanner input = new Scanner(System.in);
         Controller controller = new Controller();
 
+        controller.addMovie("Edward Scissorhands", "Tim Burton", 1991, true, 87, "Fantasy");
+        controller.addMovie("Corpse Bride", "Tim Burton", 1991, true, 87, "Fantasy");
+        controller.addMovie("Nightmare Before Christmas", "Tim Burton", 1991, true, 87, "Fantasy");
+        controller.addMovie("Charlie and the Chocolate Factory", "Tim Burton", 1991, true, 87, "Fantasy");
+        controller.addMovie("Alice in Wonderland", "Tim Burton", 1991, true, 87, "Fantasy");
+
         System.out.println("Welcome to my movie collection!");
         System.out.println("1. Add a new movie");
         System.out.println("2. Exit");
+        System.out.println("3. Search");
+
 
         int sentinel = 2;
         int choice = input.nextInt();
 
         while (choice != sentinel) {
-            if (choice > 2) {
-                System.out.println("Please enter 1 to add a new movie or 2 to end the program");
+            if (choice > 3 || choice < 0) {
+                System.out.println("Please enter 1 to add a new movie, 2 to end the program or 3 to search the database");
                 choice = input.nextInt();
 
             } else if (choice == 1) {
@@ -38,9 +46,22 @@ public class Main {
                 System.out.println("***** MENU ****");
                 System.out.println("1. Add a new movie");
                 System.out.println("2. Exit");
+                System.out.println("3. Search");
 
                 choice = input.nextInt();
+
+            } else if (choice == 3) {
+                System.out.println("Please enter the title of the movie you wish to see");
+                input.nextLine();
+                String search = input.nextLine();
+                {
+                    controller.searchMovie(search);
+                }
+                System.out.println();
+                choice = input.nextInt();
+                }
+
+                }
             }
         }
-    }
-}
+
