@@ -15,4 +15,12 @@ public class Controller {
     public void searchMovie(String input) {
         collection.searchMovie(input);
     }
+
+    public void editMovie(String title, String fieldToEdit, String newValue) {
+        collection.editMovie(title, fieldToEdit, newValue);
+    }
+
+    public void printMovieData(Movie movie) {
+        collection.printMovieData(movie);
+    }
 }
