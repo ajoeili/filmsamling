@@ -2,103 +2,82 @@ import java.util.ArrayList;
 
 public class MovieCollection {
 
-    private ArrayList<Movie> collection;
+    private ArrayList<Movie> collection; //Field of an ArrayList named collection of the type Movie
 
-    public MovieCollection() {
+    public MovieCollection() { //Constructor: Creates the ArrayList collection
         collection = new ArrayList<Movie>();
     }
 
+    //Method to add movies to the collection: Creates an instance of Movie and adds it to the ArrayList
     public void addMovie(String title, String director, int yearCreated, boolean isInColor, double lengthInMinutes, String genre) {
         Movie movie = new Movie(title, director, yearCreated, isInColor, lengthInMinutes, genre);
         collection.add(movie);
     }
 
+    //Method to print the titles in the collection: Iterates through the collection and prints all the films
     public void collectionList() {
-        for (Movie movie : collection) {
-            System.out.println(movie.getTitle());
+        for (Movie movie : collection) { //For every movie of the type Movie in the collection
+            System.out.println(movie.getTitle()); //Print the title
         }
     }
 
+    //Method to search for a movie in the collection taking one argument of the type String
     public String searchMovie(String input) {
-        String result = "";
-        if (!(input.isEmpty())) {
-            result += "Searching for: " + input + "\n";
-            boolean found = false;
-            for (Movie movie : collection) {
-                if (movie.getTitle().toLowerCase().contains(input.toLowerCase())) {
-                    result += "Title: " + movie.getTitle() + "\n";
-                    result += "Director: " + movie.getDirector() + "\n";
-                    result += "Year: " + movie.getYearCreated() + "\n";
-                    result += "In Color: " + (movie.isInColor() ? "Yes" : "No") + "\n";
-                    result += "Length: " + movie.getLengthInMinutes() + " minutes" + "\n";
-                    result += "Genre: " + movie.getGenre() + "\n";
-                    result += "\n";
-                    found = true;
+        String result = ""; //Empty variable of the type String
+        if (!input.isEmpty()) { //If the input argument is not empty do the following
+            boolean found = false; //Boolean variable that comes in handy later
+            for (Movie movie : collection) { //Iterates through the movie collection
+                if (movie.getTitle().toLowerCase().contains(input.toLowerCase())) { //If the title contains the input argument do the following
+                    result = "Title: " + movie.getTitle() + "\n"; //Adds the title to the result
+                    result += "Director: " + movie.getDirector() + "\n"; //Along with the director
+                    result += "Year: " + movie.getYearCreated() + "\n"; //The year
+                    result += "In Color: " + (movie.isInColor() ? "Yes" : "No") + "\n"; //The color
+                    result += "Length: " + movie.getLengthInMinutes() + " minutes" + "\n"; //The length
+                    result += "Genre: " + movie.getGenre() + "\n"; //And the genre
+                    result += "\n"; //This means next line
+                    found = true; //Helps check if the movie is actually part of the collection
                 }
             }
-            if (!found) {
-                result += "No movies matching your search\n";
+            if (!found) { //If the movie is not found
+                result += "No movies matching your search\n"; //Add this to the result instead
             }
         } else {
-            result += "You have entered nothing. Please enter the title of the movie you wish to find\n";
+            result += "You have entered nothing. Please enter the title of the movie you wish to find\n"; //If nothing is entered add this to result instead
         }
-        System.out.println(result);
-        return result;
+        return result; //Self-explanatory
     }
 
-    public void printMovieData(Movie movie) {
-        if (movie != null) {
-            System.out.println("Title: " + movie.getTitle() + "\n");
-            System.out.println("Director: " + movie.getDirector() + "\n");
-            System.out.println("Year Created: " + movie.getYearCreated() + "\n");
-            System.out.println("Color: " + (movie.isInColor() ? "Yes" : "No" + "\n"));
-            System.out.println("Length: " + movie.getLengthInMinutes() + " minutes" + "\n");
-            System.out.println("Genre: " + movie.getGenre() + "\n");
-            System.out.println();
-        } else {
-            System.out.println("Movie not found\n");
-        }
-    }
-
+    //Method to edit a movie taking three arguments of the type String
     public String editMovie(String title, String fieldToEdit, String newValue) {
-        if (!(title.isEmpty())) {
-            for (Movie movie : collection) {
-                if (movie.getTitle().equalsIgnoreCase(title)) {
-                    if ("title".equalsIgnoreCase(fieldToEdit)) {
-                        movie.setTitle(newValue);
-                        printMovieData(movie);
-                        return "Title updated successfully\n";
-                    }
-                    if ("director".equalsIgnoreCase(fieldToEdit)) {
-                        movie.setDirector(newValue);
-                        printMovieData(movie);
-                        return "Director updated successfully\n";
-                    }
-                    if ("year".equalsIgnoreCase(fieldToEdit)) {
+        if (!title.isEmpty()) { //If the title is not empty
+            for (Movie movie : collection) { //Then iterate through the collection
+                if (movie.getTitle().equalsIgnoreCase(title)) { //If the title of the movie is equal to the title argument
+                    if ("title".equalsIgnoreCase(fieldToEdit)) { //And the argument fieldToEdit is equal to "title"
+                        movie.setTitle(newValue); //Then set title to whatever the argument newValue is
+                        return "Title edited successfully"; //And return a message
+                    } else if ("director".equalsIgnoreCase(fieldToEdit)) { //Otherwise if the fieldToEdit is equal to director
+                        movie.setDirector(newValue); //Then set director to whatever the argument newValue is
+                        return "Director edited successfully"; //And return a message
+                    } else if ("year".equalsIgnoreCase(fieldToEdit)) { //And so on..
                         movie.setYearCreated(Integer.parseInt(newValue));
-                        printMovieData(movie);
-                        return "Year created updated successfully\n";
-                    }
-                    if ("color".equalsIgnoreCase(fieldToEdit)) {
+                        return "Year edited successfully";
+                    } else if ("color".equalsIgnoreCase(fieldToEdit)) {
                         movie.setIsInColor(Boolean.parseBoolean(newValue));
-                        printMovieData(movie);
-                        return "Color updated successfully\n";
-                    }
-                    if ("length".equalsIgnoreCase(fieldToEdit)) {
+                        return "Color edited successfully";
+                    } else if ("length".equalsIgnoreCase(fieldToEdit)) {
                         movie.setLengthInMinutes(Double.parseDouble(newValue));
-                        printMovieData(movie);
-                        return "Length in minutes updated successfully\n";
-                    }
-                    if ("genre".equalsIgnoreCase(fieldToEdit)) {
+                        return "Length edited successfully";
+                    } else if ("genre".equalsIgnoreCase(fieldToEdit)) {
                         movie.setGenre(newValue);
-                        printMovieData(movie);
-                        return "Genre updated successfully\n";
+                        return "Genre edited successfully";
+                    } else { //If none of the above match the argument fieldToEdit
+                        return "No match found"; //Return this
                     }
-                    return "Invalid input, please try again\n";
+
                 }
             }
         }
-        return "Movie not found\n";
+        return "No movie found"; //And if no movie of this title exists in the collection return this
     }
 }
 

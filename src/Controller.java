@@ -1,26 +1,28 @@
 public class Controller {
-    private MovieCollection collection;
+    private MovieCollection collection; //Field of the type MovieCollection named collection
 
-    public Controller() {
+    public Controller() { //Constructor: Creates the collection
         collection = new MovieCollection();
     }
 
+    //The addMovie method from the MovieCollection class
     public void addMovie(String title, String director, int yearCreated, boolean isInColor, double lengthInMinutes, String genre) {
         collection.addMovie(title, director, yearCreated, isInColor, lengthInMinutes, genre);
     }
 
+    //The collectionList method from the MovieCollection class
     public void collectionList() {
         collection.collectionList();
     }
-    public void searchMovie(String input) {
-        collection.searchMovie(input);
+
+    //The searchMovie method from the MovieCollection class
+    public String searchMovie(String input) {
+        return collection.searchMovie(input);
     }
 
+    //The editMovie method from the MovieCollection class
     public void editMovie(String title, String fieldToEdit, String newValue) {
         collection.editMovie(title, fieldToEdit, newValue);
     }
 
-    public void printMovieData(Movie movie) {
-        collection.printMovieData(movie);
-    }
 }

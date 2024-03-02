@@ -1,5 +1,6 @@
 public class Movie {
 
+    //Saves data of the movie
     private String title;
     private String director;
     private int yearCreated;
@@ -7,6 +8,7 @@ public class Movie {
     private double lengthInMinutes;
     private String genre;
 
+    //Constructor: Creates the movie instance
     public Movie(String title, String director, int yearCreated, boolean isInColor, double lengthInMinutes, String genre) {
         this.title = title;
         this.director = director;
@@ -15,7 +17,7 @@ public class Movie {
         this.lengthInMinutes = lengthInMinutes;
         this.genre = genre;
     }
-
+    //Getter methods to access the private data in the fields above
     public String getTitle() {
         return title;
     }
@@ -40,6 +42,7 @@ public class Movie {
         return genre;
     }
 
+    //Setter methods to edit the private data in the fields above
     public void setTitle(String title) {
         this.title = title;
     }
